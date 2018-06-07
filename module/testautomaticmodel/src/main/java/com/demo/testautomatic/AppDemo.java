@@ -1,37 +1,22 @@
 package com.demo.testautomatic;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.AndroidKeyCode;
-import io.appium.java_client.remote.MobileCapabilityType;
 
 public class AppDemo {
     private static AndroidDriver<AndroidElement> driver;
 
     @Before
     public void setUp() throws Exception {
-        // set up appium
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(CapabilityType.BROWSER_NAME, "");//设置HTML5的自动化，打开谷歌浏览器
-        //capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");//安卓自动化还是IOS自动化
-        capabilities.setCapability(MobileCapabilityType.UDID, "49f24398");//设备id
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Xiaomi MI 4LTE");//设备名称
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0.1");//安卓操作系统版本
-        //capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("appPackage", "cn.zhudi.mvpdemo");//被测app的包名
-        capabilities.setCapability("appActivity", ".WelcomeActivity");//被测app的入口Activity名称
-        driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        System.out.println("App is launched!");
+        driver = MyAndroidDriver.getInstance();
     }
 
     @After
