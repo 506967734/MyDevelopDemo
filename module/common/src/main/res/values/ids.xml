@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="titlebar_view" type="id"/>
+    <item name="popup_view_id" type="id"/>
+    <item name="dialog_negative_button_id" type="id"/>
+    <item name="dialog_positive_button_id" type="id"/>
+</resources>

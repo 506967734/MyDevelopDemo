@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+apply from: "${rootProject.rootDir}/common_config.gradle"
+
+android {
+    compileSdkVersion BUILD_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGT_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'org.greenrobot:greendao:3.2.0'
+    /*rx-android-java*/
+    api 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    api 'com.trello:rxlifecycle:1.0'
+    api 'com.trello:rxlifecycle-components:1.0'
+    /*rotrofit*/
+    api 'com.squareup.retrofit2:retrofit:2.1.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.0.0'
+    api 'com.squareup.okhttp3:okhttp:3.9.1'
+    api project(":module:common")
+}

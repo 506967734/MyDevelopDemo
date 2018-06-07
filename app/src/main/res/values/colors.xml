@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#feffff</color>
+    <color name="colorPrimaryDark">#feffff</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="main_navigation_bg">#ff363636</color>
+    <color name="ad">#00000000</color>
+
+
+    <color name="public_bg">#ECECEC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray3">#484848</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="gray3_50">#80484848</color>
+    <color name="public_line">#DFDFDF</color>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="gm_textcolor_black">#333333</color>
+    <color name="btn_view_sel_color">#E6E6E6</color>
+    <color name="indication_text_color">#333333</color>
+    <color name="color_999999">#999999</color>
+    <color name="theme_btn_color">#1c76fe</color>
+    <color name="item_title_color">#555555</color>
+    <color name="floralwhite">#FFFAF0</color>
+    <color name="item_dividing_line">#e1e1e1</color>
+    <color name="color_989898">#989898</color>
+    <color name="color_2f6298">#2F6298</color>
+
+</resources>

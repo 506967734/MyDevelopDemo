@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/ts_main_list_padding"
+            android:paddingBottom="@dimen/ts_main_list_padding"
+            android:paddingRight="@dimen/ts_main_list_padding">
+
+            <Button
+                android:id="@+id/ts_btn_rpc_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ts_main_list_item_height"
+                android:layout_marginTop="@dimen/ts_main_list_padding"
+                android:gravity="center"
+                android:text="RPC环境切换" />
+
+
+            <Button
+                android:id="@+id/ts_btn_mock"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ts_main_list_item_height"
+                android:layout_marginTop="@dimen/ts_main_list_padding"
+                android:gravity="center"
+                android:text="ts_btn_mock" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

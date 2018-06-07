@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply from: "${rootProject.rootDir}/common_config.gradle"
+
+android {
+    compileSdkVersion BUILD_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGT_SDK_VERSION
+        versionCode 1
+        versionName "1.0.0"
+    }
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "com.google.code.gson:gson:$GSON_VERSION"
+    provided project(":module:common")
+    api 'com.squareup.okhttp3:okhttp:3.4.1'
+}

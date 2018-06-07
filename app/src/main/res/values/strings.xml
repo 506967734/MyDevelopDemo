@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">73.5度</string>
+
+    <string name="home">首页</string>
+    <string name="category">G商城</string>
+    <string name="car">购物车</string>
+    <string name="personal">个人中心</string>
+</resources>

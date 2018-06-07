@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titlebar_height">45dp</dimen>
+    <dimen name="text_xmedium">16sp</dimen>
+    <dimen name="text_medium">14sp</dimen>
+    <dimen name="size_xsmall">40dp</dimen>
+</resources>

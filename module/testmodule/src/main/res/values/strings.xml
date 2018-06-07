@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">testmodule</string>
+    <string name="ts_text_launcher">测试入口</string>
+</resources>

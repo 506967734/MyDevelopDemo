@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<url>
+    <Node
+        Url="http://www.weather.com.cn/data/sk/101010100.html"
+        FileName = "weather.json"
+        NetworkDelay = "100"
+        Selected = "0"
+        Api = "WeatherApi"
+        Describe = "天气"/>
+</url>

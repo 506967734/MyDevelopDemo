@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_base_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/base_bg_dialog"
+    android:baselineAligned="false"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/dialog_title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp" >
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:paddingBottom="6dp"
+            android:paddingTop="25dp"
+            android:text="常用地址"
+            android:textColor="@color/indication_text_color"
+            android:textSize="@dimen/text_medium"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/dialog_title_close_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/dialog_close"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            android:background="@color/btn_view_sel_color" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/dialog_content_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/base_bg_dialog"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/dialog_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/color_989898"
+            android:textSize="@dimen/text_xmedium"
+            android:paddingBottom="20dp"
+            android:paddingTop="10dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/base_dialog_line"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:visibility="gone"
+        android:background="@color/item_dividing_line" />
+
+    <!-- android:layout_marginTop="10dp" -->
+
+    <LinearLayout
+        android:id="@+id/dialog_buttons_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/base_bg_dialog"
+        android:gravity="center"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</LinearLayout>

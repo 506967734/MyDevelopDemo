@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+apply from: "${rootProject.rootDir}/common_config.gradle"
+android {
+    compileSdkVersion BUILD_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGT_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':module:retrofitLibrary')
+}
