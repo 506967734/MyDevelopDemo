@@ -42,9 +42,17 @@ public class LoginOperate extends OperateAppium {
             print("点击登录");
             clickView(loginPage.getWelcmoeLoginButton());
         } else if (loginPage.getLoginButton() == null) {//自动登录了就输出成功，返回
-            print("自动登录了，返回,执行注销");
-            return true;
-
+            print("自动登录了");
+            //点击头像
+            clickView(loginPage.getHeaderButton());
+            print("点击头像了");
+            sleep(1000);
+            //注销
+            clickView(loginPage.getLogoutButton());
+            print("点击注销了");
+            //注销确定
+            clickView(loginPage.getLogoutSureButton());
+            print("注销成功了");
         }
 
         //输入内容

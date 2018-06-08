@@ -31,6 +31,16 @@ public class LoginPage extends PageAppium {
     //登录完成之后的activity名字
     public final String INDEX_ACTIVITY_NAME = "IndexActivity";
 
+    //首页头像ID
+    public final String HEADER_BUTTON_ID = "commonheader_left";
+
+    //注销
+    private final String LOGOUT_BUTTON_ID = "slidingmenu_exit_account";
+
+    //注销确认按键
+    private final String LOGON_BUTTON_SURE_ID = "dilaog_button3";
+
+
     public LoginPage(AndroidDriver driver) {
         super(driver);
     }
@@ -68,6 +78,18 @@ public class LoginPage extends PageAppium {
         return findById(WELCOME_LOGIN_BUTTON_ID);
     }
 
+
+    public AndroidElement getHeaderButton() {
+        return findById(HEADER_BUTTON_ID);
+    }
+
+    public AndroidElement getLogoutButton() {
+        return findById(LOGOUT_BUTTON_ID);
+    }
+
+    public AndroidElement getLogoutSureButton() {
+        return findById(LOGON_BUTTON_SURE_ID);
+    }
 
     public AndroidElement getLoginButton() {
         return findById(LOGIN_BUTTON_ID, "登录按键");
