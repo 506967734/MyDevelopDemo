@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'org.testng:testng:6.9.6'
+    implementation 'com.google.inject:guice:+'
+    implementation 'org.anarres.gradle:gradle-velocity-plugin:+'
+    implementation files('libs/test-java-client-4.1.2.jar')
+    implementation files('libs/test-reportng-1.1.5.jar')
+    implementation files('libs/test-selenium-server-standalone-3.0.0-beta3.jar')
+}
