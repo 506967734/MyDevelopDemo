@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import static com.demo.autotest.base.InitAppium.appPackage;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
@@ -203,6 +204,8 @@ public class PageAppium {
     }
 
 
+
+
     public AndroidElement findElementBy(By by) {
         return findElementBy(by, "");
     }
@@ -358,7 +361,6 @@ public class PageAppium {
             print("获取多个控件异常" + e.getMessage());
         }
         return null;
-
     }
 
     /**
@@ -385,7 +387,6 @@ public class PageAppium {
         }
 
         return null;
-
     }
 
     /**
@@ -409,4 +410,36 @@ public class PageAppium {
         }
     }
 
+    /**
+     * 获取控件
+     *
+     * @param fatherClassName
+     * @param childrenClassName
+     * @return
+     */
+    /**
+     * 列表的点击
+     * @param fatherClassName
+     * @param fatherNum
+     * @param childrenClassName
+     * @param clickPosition
+     * @return
+     */
+    public boolean clickListElementByClassName(String fatherClassName, int fatherNum, String childrenClassName,int clickPosition) {
+        if (driver != null) {
+            List<AndroidElement> fatherList = getManyElementByClassName(fatherClassName, fatherNum);
+            List<MobileElement> list = new ArrayList<>();
+            try {
+                for (int i = 0; i < fatherNum; i++) {
+                    list.addAll((fatherList.get(i).findElementsByClassName(childrenClassName)));
+                }
+                list.get(clickPosition).click();
+                return true;
+            } catch (Exception e) {
+                print("获取多个控件异常" + e.getMessage());
+                return false;
+            }
+        }
+        return false;
+    }
 }

@@ -4,7 +4,10 @@ import com.demo.autotest.base.Assertion;
 import com.demo.autotest.base.OperateAppium;
 import com.demo.autotest.pages.IndexPage;
 
+import java.util.List;
+
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 public class IndexOperate extends OperateAppium {
 
@@ -81,8 +84,7 @@ public class IndexOperate extends OperateAppium {
      * 首页listView点击
      */
     public void clickMainListView() {
-        clickView(indexPage.findByXpath("//android.widget.TextView[@text='贾福军']"));
-        sleep(5);
+        indexPage.clickListView("android.widget.ListView", 1, "android.widget.RelativeLayout", 1);
     }
 
 

@@ -124,6 +124,10 @@ public class IndexPage extends PageAppium {
         return isXpathExist("//android.widget.TextView[@text='最佳临床实践']");
     }
 
+    public boolean clickListView(String fatherClassName, int fatherNum, String childrenClassName,int clickPosition){
+        return clickListElementByClassName(fatherClassName,fatherNum,childrenClassName,clickPosition);
+    }
+
 
     /**
      * 首页是否在监护页面
