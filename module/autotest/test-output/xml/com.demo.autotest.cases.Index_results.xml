@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Test"
+           tests="9"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="55.824">
+  <properties />
+  
+  
+            <testcase name="testPersonCenter" time="1.301" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testSchoolTab" time="6.874" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testMain" time="3.976" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testSchool" time="1.952" classname="com.demo.autotest.cases.Index" />
+                <testcase name="Login" time="36.735" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testInspection" time="1.167" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testNoticeCenter" time="1.576" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testExpertSearch" time="2.077" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testIntentcare" time="0.166" classname="com.demo.autotest.cases.Index" />
+      
+</testsuite>

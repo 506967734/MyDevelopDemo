@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" > <!--parallel="true"  并行-->
+    <test name="Test" >
+        <classes>
+            <class name="com.demo.autotest.cases.Index" />
+                <!--<methods>
+                    <include name="loginErrorUser"/>
+                    <include name="loginErrorNum"/>
+                    <include name="loginEmpty"/>
+                    <include name="loginConfim"/>
+                </methods>-->
+            <!--<class name="包名.case名字" />
+            <class name="包名.case名字" />-->
+        </classes>
+        <listeners>
+            <listener class-name="org.uncommons.reportng.HTMLReporter" />
+            <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+        </listeners>
+    </test><!--Test-->
+</suite><!--Suite-->
