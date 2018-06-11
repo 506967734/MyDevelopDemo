@@ -71,12 +71,18 @@ public class IndexOperate extends OperateAppium {
      * 验证首页
      */
     public boolean verifyMain() {
-
         //goMain();
-
         //点击
         clickView(indexPage.findByXpath("//android.widget.TextView[@text='首页']"), "底部主页按钮");
         return indexPage.isCurrExpertMain() || indexPage.isCurrNotExpertMain();
+    }
+
+    /**
+     * 首页listView点击
+     */
+    public void clickMainListView() {
+        clickView(indexPage.findByXpath("//android.widget.TextView[@text='贾福军']"));
+        sleep(5);
     }
 
 
@@ -87,7 +93,7 @@ public class IndexOperate extends OperateAppium {
 
         //goMain();
         String xpath = "//android.widget.TextView[@text='专家']";
-        if(waitAutoByXp(xpath,1) == null){
+        if (waitAutoByXp(xpath, 1) == null) {
             press();   //引导点击
         }
 
@@ -113,18 +119,16 @@ public class IndexOperate extends OperateAppium {
     /**
      * 验证学府的tab
      */
-    public boolean verifySchoolTab(int flag){
+    public boolean verifySchoolTab(int flag) {
         //verifySchool();
         String name = indexPage.getSCHOOL_TAB_FLAG_TEXT()[flag];
-        if(clickView(indexPage.findByXpath("//android.widget.TextView[@text='"+name+"']"), "点击学府tab"+name)){
+        if (clickView(indexPage.findByXpath("//android.widget.TextView[@text='" + name + "']"), "点击学府tab" + name)) {
             return indexPage.isCurrSchool();
-        }else{
+        } else {
             return false;
         }
 
     }
-
-
 
 
     /**
@@ -149,9 +153,9 @@ public class IndexOperate extends OperateAppium {
         if (indexPage.isExistIntentcare()) {
             //点击
             clickView(indexPage.findByXpath("//android.widget.TextView[@text='监护']"), "底部监护文本控件");
-            boolean flag =  indexPage.isCurrIntentcare();
+            boolean flag = indexPage.isCurrIntentcare();
             Assertion.verifyEquals(flag, true);
-        }else{
+        } else {
             print("监护不存在!");
         }
     }

@@ -54,6 +54,7 @@ public class Index extends InitAppium {
     public void testMain() {
         Assertion.verifyEquals(indexOperate.verifyMain(), true, "首页是否正常显示");
         Reporter.log("首页正常显示");
+        indexOperate.clickMainListView();
     }
 
     /**
