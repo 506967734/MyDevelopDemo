@@ -75,5 +75,7 @@ dependencies {
     implementation project(':module:common')
     implementation project(':module:apicommon')
     debugImplementation project(':module:testmodule')
+//    debugCompile 'me.ele:uetool:1.0.15'
+//    releaseCompile 'me.ele:uetool-no-op:1.0.15'
 }
 
