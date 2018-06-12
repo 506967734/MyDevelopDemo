@@ -1,81 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="Test"
            tests="9"
-           failures="3"
+           failures="0"
            errors="0"
            skipped="0"
-           time="83.550">
+           time="102.623">
   <properties />
-            <testcase name="testSchool" time="13.239" classname="com.demo.autotest.cases.Index">
-                <failure type="java.lang.Throwable"
-                  message="(null)"
-              >
-<![CDATA[java.lang.Throwable
-  
-报错信息: 学府整体是否正常显示 expected [true] but found [false].
-报错方法名:testSchool(
-报错类:Index
-报错行号:74)
-  com.demo.autotest.cases.Index.testSchool(Index.java:74)
-]]>
-      </failure>
-
-          </testcase>
-            <testcase name="testSchoolTab" time="13.680" classname="com.demo.autotest.cases.Index">
-                <failure type="java.lang.Throwable"
-                  message="(null)"
-              >
-<![CDATA[java.lang.Throwable
-  
-报错信息: 学府Tab精卫科普是否正常 expected [true] but found [false].
-报错方法名:testSchoolTab(
-报错类:Index
-报错行号:83)
-  com.demo.autotest.cases.Index.testSchoolTab(Index.java:83)
-  
-报错信息: 学府Tab在线学习是否正常 expected [true] but found [false].
-报错方法名:testSchoolTab(
-报错类:Index
-报错行号:83)
-  com.demo.autotest.cases.Index.testSchoolTab(Index.java:83)
-  
-报错信息: 学府Tab前沿资讯是否正常 expected [true] but found [false].
-报错方法名:testSchoolTab(
-报错类:Index
-报错行号:83)
-  com.demo.autotest.cases.Index.testSchoolTab(Index.java:83)
-  
-报错信息: 学府Tab政策法规是否正常 expected [true] but found [false].
-报错方法名:testSchoolTab(
-报错类:Index
-报错行号:83)
-  com.demo.autotest.cases.Index.testSchoolTab(Index.java:83)
-]]>
-      </failure>
-
-          </testcase>
-            <testcase name="testExpertSearch" time="11.843" classname="com.demo.autotest.cases.Index">
-                <failure type="java.lang.Throwable"
-                  message="(null)"
-              >
-<![CDATA[java.lang.Throwable
-  
-报错信息: 首页是否正常显示 expected [true] but found [false].
-报错方法名:testExpertSearch(
-报错类:Index
-报错行号:65)
-  com.demo.autotest.cases.Index.testExpertSearch(Index.java:65)
-]]>
-      </failure>
-
-          </testcase>
   
   
-            <testcase name="testInspection" time="1.973" classname="com.demo.autotest.cases.Index" />
-                <testcase name="Login" time="35.713" classname="com.demo.autotest.cases.Index" />
-                <testcase name="testIntentcare" time="0.193" classname="com.demo.autotest.cases.Index" />
-                <testcase name="testNoticeCenter" time="1.318" classname="com.demo.autotest.cases.Index" />
-                <testcase name="testMain" time="4.416" classname="com.demo.autotest.cases.Index" />
-                <testcase name="testPersonCenter" time="1.175" classname="com.demo.autotest.cases.Index" />
+            <testcase name="Login" time="34.365" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testPersonCenter" time="1.420" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testMain" time="46.855" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testIntentcare" time="0.221" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testInspection" time="2.074" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testSchool" time="1.657" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testExpertSearch" time="7.540" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testSchoolTab" time="6.820" classname="com.demo.autotest.cases.Index" />
+                <testcase name="testNoticeCenter" time="1.671" classname="com.demo.autotest.cases.Index" />
       
 </testsuite>
