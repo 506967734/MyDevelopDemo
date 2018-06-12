@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
  * Created by lixiaolei on 2016/9/28.
  */
 public class ConvertUtil {
+
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      */
