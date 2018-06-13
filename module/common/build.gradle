@@ -34,6 +34,6 @@ dependencies {
     api('com.github.tony19:logback-android-classic:1.1.1-5') {
         exclude group: 'com.google.android', module: 'android'
     }
-    //compile project(':cachemodule')
     testCompile 'junit:junit:4.12'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
 }
