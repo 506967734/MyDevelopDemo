@@ -14,6 +14,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         proguardFiles fileTree(dir: 'proguard', include: ['*.pro']).asList().toArray()
+        ndk {
+            abiFilters 'armeabi'
+        }
+        resConfigs "zh"
     }
 
 
@@ -75,7 +79,6 @@ dependencies {
     implementation project(':module:common')
     implementation project(':module:apicommon')
     debugImplementation project(':module:testmodule')
-//    debugCompile 'me.ele:uetool:1.0.15'
-//    releaseCompile 'me.ele:uetool-no-op:1.0.15'
+    implementation project(':module:webviewlibrary')
 }
 

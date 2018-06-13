@@ -2,7 +2,12 @@ package cn.zhudi.mvpdemo.ui.fragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
+import com.demo.webview.X5WebView;
+
+import butterknife.BindView;
 import cn.zhudi.mvpdemo.R;
 import cn.zhudi.mvpdemo.base.BaseFragment;
 
@@ -12,6 +17,12 @@ import cn.zhudi.mvpdemo.base.BaseFragment;
  * 创建人：zhudi
  */
 public class FragmentShop extends BaseFragment {
+    @BindView(R.id.webView)
+    ViewGroup viewParent;
+    /**
+     * 作为一个浏览器的示例展示出来，采用android+web的模式
+     */
+    private X5WebView mWebView;
 
     public static FragmentShop newInstance(String s) {
         FragmentShop fragment = new FragmentShop();
@@ -40,6 +51,14 @@ public class FragmentShop extends BaseFragment {
     }
 
     private void initView() {
+
+        mWebView = new X5WebView(getActivity(), null);
+
+        viewParent.addView(mWebView, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT));
+
+        mWebView.loadUrl("http://app.html5.qq.com/navi/index");
     }
 
 
