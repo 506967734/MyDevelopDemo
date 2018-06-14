@@ -44,7 +44,7 @@ public class FragmentCarPresenter extends BasePresenter<FragmentCarView> {
 
             @Override
             public void onError(ApiException e, String method) {
-
+                getView().showMoney(e.getDisplayMessage());
             }
         });
     }

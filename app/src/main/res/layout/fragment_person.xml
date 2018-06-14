@@ -1,287 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:overScrollMode="never">
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:overScrollMode="never">-->
 
-    <LinearLayout
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#eeeeee"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#feffff">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:orientation="vertical">-->
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="7dip"-->
+                    <!--android:layout_marginTop="7dip"-->
+                    <!--android:text="Hello,Miller"-->
+                    <!--android:textColor="@color/gray3"-->
+                    <!--android:textSize="16sp" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="20dip"-->
+                    <!--android:text="共109000绿色能量"-->
+                    <!--android:textColor="#666666"-->
+                    <!--android:textSize="14sp" />-->
+
+                <!--<View style="@style/Line" />-->
+            <!--</LinearLayout>-->
+
+
+        <!--</RelativeLayout>-->
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="15dip"-->
+            <!--android:background="#feffff"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<View style="@style/Line" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="15dip">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="0dip"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="我的订单"-->
+                    <!--android:textColor="#333333"-->
+                    <!--android:textSize="14sp" />-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/ic_public_next" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<View style="@style/Line" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="0dip"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1">-->
+
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:layout_marginTop="12.5dip"-->
+                        <!--android:src="@drawable/ic_person_order" />-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignRight="@+id/iv1"-->
+                        <!--android:layout_marginTop="10dip"-->
+                        <!--android:src="@drawable/tip_img" />-->
+
+                    <!--<TextView-->
+                        <!--style="@style/person_tv"-->
+                        <!--android:layout_below="@+id/iv1"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:text="待发货" />-->
+                <!--</RelativeLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dip"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="12.5dip"-->
+                        <!--android:src="@drawable/ic_person_order" />-->
+
+                    <!--<TextView-->
+                        <!--style="@style/person_tv"-->
+                        <!--android:text="待付款" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dip"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="12.5dip"-->
+                        <!--android:src="@drawable/ic_person_order" />-->
+
+                    <!--<TextView-->
+                        <!--style="@style/person_tv"-->
+                        <!--android:text="已发货" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dip"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="12.5dip"-->
+                        <!--android:src="@drawable/ic_person_order" />-->
+
+                    <!--<TextView-->
+                        <!--style="@style/person_tv"-->
+                        <!--android:text="待评价" />-->
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+            <!--<View style="@style/Line" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="15dip"-->
+            <!--android:background="#feffff"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<View style="@style/Line" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="15dip">-->
+
+                <!--<TextView-->
+                    <!--style="@style/person_state_tv"-->
+                    <!--android:drawableLeft="@drawable/ic_person_one"-->
+                    <!--android:text="金币数量" />-->
+
+                <!--<TextView-->
+                    <!--style="@style/person_state_tv"-->
+                    <!--android:layout_marginLeft="15dip"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="123000" />-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/ic_public_next" />-->
+            <!--</LinearLayout>-->
+
+            <!--<View style="@style/Line" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="15dip">-->
+
+                <!--<TextView-->
+                    <!--style="@style/person_state_tv"-->
+                    <!--android:drawableLeft="@drawable/ic_person_two"-->
+                    <!--android:text="公益基金" />-->
+
+                <!--<TextView-->
+                    <!--style="@style/person_state_tv"-->
+                    <!--android:layout_marginLeft="15dip"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="0.00" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<TextView-->
+                        <!--style="@style/person_state_tv"-->
+                        <!--android:layout_marginRight="15dip"-->
+                        <!--android:text="立即开通"-->
+                        <!--android:textColor="#666666" />-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@drawable/ic_public_next" />-->
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+
+            <!--<View style="@style/Line" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="15dip">-->
+
+                <!--<TextView-->
+                    <!--style="@style/person_state_tv"-->
+                    <!--android:drawableLeft="@drawable/ic_person_three"-->
+                    <!--android:text="绿色能量" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dip"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1">-->
+
+                    <!--<TextView-->
+                        <!--style="@style/person_state_tv"-->
+                        <!--android:layout_marginLeft="15dip"-->
+                        <!--android:text="123000"-->
+                        <!--android:textColor="#00b597" />-->
+
+                    <!--<TextView-->
+                        <!--style="@style/person_state_tv"-->
+                        <!--android:text="/123000" />-->
+                <!--</LinearLayout>-->
+
+
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/ic_public_next" />-->
+            <!--</LinearLayout>-->
+
+            <!--<View style="@style/Line" />-->
+        <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+<!--</ScrollView>-->
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#eeeeee"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#feffff">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dip"
-                    android:layout_marginTop="7dip"
-                    android:text="Hello,Miller"
-                    android:textColor="@color/gray3"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dip"
-                    android:text="共109000绿色能量"
-                    android:textColor="#666666"
-                    android:textSize="14sp" />
-
-                <View style="@style/Line" />
-            </LinearLayout>
-
-
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
-            android:background="#feffff"
-            android:orientation="vertical">
-
-            <View style="@style/Line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="15dip">
-
-                <TextView
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="我的订单"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_public_next" />
-
-            </LinearLayout>
-
-            <View style="@style/Line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-
-                    <ImageView
-                        android:id="@+id/iv1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="12.5dip"
-                        android:src="@drawable/ic_person_order" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignRight="@+id/iv1"
-                        android:layout_marginTop="10dip"
-                        android:src="@drawable/tip_img" />
-
-                    <TextView
-                        style="@style/person_tv"
-                        android:layout_below="@+id/iv1"
-                        android:layout_centerHorizontal="true"
-                        android:text="待发货" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12.5dip"
-                        android:src="@drawable/ic_person_order" />
-
-                    <TextView
-                        style="@style/person_tv"
-                        android:text="待付款" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12.5dip"
-                        android:src="@drawable/ic_person_order" />
-
-                    <TextView
-                        style="@style/person_tv"
-                        android:text="已发货" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12.5dip"
-                        android:src="@drawable/ic_person_order" />
-
-                    <TextView
-                        style="@style/person_tv"
-                        android:text="待评价" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View style="@style/Line" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dip"
-            android:background="#feffff"
-            android:orientation="vertical">
-
-            <View style="@style/Line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="15dip">
-
-                <TextView
-                    style="@style/person_state_tv"
-                    android:drawableLeft="@drawable/ic_person_one"
-                    android:text="金币数量" />
-
-                <TextView
-                    style="@style/person_state_tv"
-                    android:layout_marginLeft="15dip"
-                    android:layout_weight="1"
-                    android:text="123000" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_public_next" />
-            </LinearLayout>
-
-            <View style="@style/Line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="15dip">
-
-                <TextView
-                    style="@style/person_state_tv"
-                    android:drawableLeft="@drawable/ic_person_two"
-                    android:text="公益基金" />
-
-                <TextView
-                    style="@style/person_state_tv"
-                    android:layout_marginLeft="15dip"
-                    android:layout_weight="1"
-                    android:text="0.00" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/person_state_tv"
-                        android:layout_marginRight="15dip"
-                        android:text="立即开通"
-                        android:textColor="#666666" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_public_next" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View style="@style/Line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="15dip">
-
-                <TextView
-                    style="@style/person_state_tv"
-                    android:drawableLeft="@drawable/ic_person_three"
-                    android:text="绿色能量" />
-
-                <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        style="@style/person_state_tv"
-                        android:layout_marginLeft="15dip"
-                        android:text="123000"
-                        android:textColor="#00b597" />
-
-                    <TextView
-                        style="@style/person_state_tv"
-                        android:text="/123000" />
-                </LinearLayout>
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_public_next" />
-            </LinearLayout>
-
-            <View style="@style/Line" />
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+        android:divider="#E5E5E5"
+        android:dividerHeight="1px"
+        android:overScrollMode="never" />
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
