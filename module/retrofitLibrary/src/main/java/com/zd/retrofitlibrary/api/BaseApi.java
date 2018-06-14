@@ -14,6 +14,7 @@ public abstract class BaseApi {
     private boolean showProgress = true;
     /*是否需要缓存处理*/
     private boolean cache = false;
+    private String progressMessage = "请稍等";
     /*基础url*/
     private String baseUrl = "http://121.43.187.244:80/";
     /*方法-如果需要缓存必须设置这个参数；不需要不用設置*/
@@ -77,6 +78,14 @@ public abstract class BaseApi {
 
     public void setCache(boolean cache) {
         this.cache = cache;
+    }
+
+    public String getProgressMessage() {
+        return progressMessage;
+    }
+
+    public void setProgressMessage(String progressMessage) {
+        this.progressMessage = progressMessage;
     }
 
     public boolean isShowProgress() {

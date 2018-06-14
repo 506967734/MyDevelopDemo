@@ -57,7 +57,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
         this.mActivity = mActivity;
         setShowPorgress(api.isShowProgress());
         if (api.isShowProgress()) {
-            initProgressDialog(api.isCancel());
+            initProgressDialog(api.isCancel(), api.getProgressMessage());
         }
     }
 
@@ -65,9 +65,10 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
     /**
      * 初始化加载框
      */
-    private void initProgressDialog(boolean cancel) {
+    private void initProgressDialog(boolean cancel, String message) {
         if (pd == null && mActivity != null) {
             pd = new ProgressDialog(mActivity);
+            pd.setMessage(message);
             pd.setCancelable(cancel);
             if (cancel) {
                 pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
