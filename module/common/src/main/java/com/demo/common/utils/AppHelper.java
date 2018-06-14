@@ -36,9 +36,7 @@ import java.util.Locale;
 import java.util.Map;
 
 
-/**
- * Created by cwf on 16/6/27.
- */
+
 public class AppHelper {
 
     private static Logger logger = LoggerFactory.getLogger("AppHelper");
@@ -47,46 +45,48 @@ public class AppHelper {
     /*1、测试环境，开发环境，自定义环境 return true  2、正式环境，预发布环境视为 return false*/
     public static boolean isDebugable(@NonNull Context context) {
         boolean debug = isApkDebugable(context);
-        if(debug){
+        if (debug) {
             initRpcFile(context);
-            String content = FileHelper.readContentFromFile(RPC_TEST_FILE,"utf-8");
-            if("online".equals(content)){
+            String content = FileHelper.readContentFromFile(RPC_TEST_FILE, "utf-8");
+            if ("online".equals(content)) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
-        }else{
+        } else {
             //强制使用正式环境
             return false;
         }
     }
+
     @Deprecated
     public static boolean isDebugableOld(@NonNull Context context) {
         boolean debug = isApkDebugable(context);
-        if(debug){
+        if (debug) {
             initRpcFile(context);
-            String content = FileHelper.readContentFromFile(RPC_TEST_FILE,"utf-8");
-            if("online".equals(content)||"pre_online".equals(content)){
+            String content = FileHelper.readContentFromFile(RPC_TEST_FILE, "utf-8");
+            if ("online".equals(content) || "pre_online".equals(content)) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
-        }else{
+        } else {
             //强制使用正式环境
             return false;
         }
     }
+
     private static void initRpcFile(Context context) {
-        if(RPC_TEST_FILE==null){
-            RPC_TEST_FILE = new File(FileHelper.getAppExternalDir(context),"chuanhua_setting_dir"+File.separator+"RPC_TEST_FILE.txt");
+        if (RPC_TEST_FILE == null) {
+            RPC_TEST_FILE = new File(FileHelper.getAppExternalDir(context), "chuanhua_setting_dir" + File.separator + "RPC_TEST_FILE.txt");
         }
     }
 
     public static boolean isApkDebugable(@NonNull Context context) {
         try {
-            ApplicationInfo info= context.getApplicationInfo();
+            ApplicationInfo info = context.getApplicationInfo();
             boolean isApkDebugable = (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
-            if(isApkDebugable){
+            if (isApkDebugable) {
                 initRpcFile(context);
             }
             return isApkDebugable;
@@ -99,7 +99,7 @@ public class AppHelper {
     public static boolean isStorageAvailable() {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
-    
+
     public static boolean isNetWorkAvailable(@NonNull Context context) {
         try {
             ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -126,7 +126,7 @@ public class AppHelper {
             int pid = Process.myPid();
             ActivityManager mActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
             List<ActivityManager.RunningAppProcessInfo> list = mActivityManager.getRunningAppProcesses();
-            if(list != null && !list.isEmpty()) {
+            if (list != null && !list.isEmpty()) {
                 for (ActivityManager.RunningAppProcessInfo appProcess : list) {
                     if (appProcess.pid == pid) {
                         return appProcess.processName;
@@ -148,17 +148,16 @@ public class AppHelper {
     /**
      * 获取设备唯一UUID,生成的规则是
      * MD5 & HEX( WLAN MAC + Bluetooth MAC + Secure.ANDROID_ID + IMEI + android.os.Build.SERIAL)
+     *
      * @return
      */
     public static String getUUID(@NonNull Context context) {
         logger.debug("getUUID...");
         String uuid = null;
-        if(!TextUtils.isEmpty(CacheUtil.getString(context,CacheUtil.uuid))) {
-            uuid=CacheUtil.getString(context,CacheUtil.uuid);
-        }else {
-
+        if (!TextUtils.isEmpty(CacheUtil.getString(context, CacheUtil.uuid))) {
+            uuid = CacheUtil.getString(context, CacheUtil.uuid);
+        } else {
             String fileName = "chuanhuauuid";
-
             //从/data/data/${package}/chxuuid/chuanhuauuid读取
             String internalUUID = null;
             File internalDir = context.getDir("chxuuid", Context.MODE_PRIVATE);
@@ -170,7 +169,6 @@ public class AppHelper {
                 internalUUID = FileHelper.readContentFromFile(internalFile, FileHelper.DEFAULT_CHARSET);
             }
             logger.info("internalUUID:{}, internalFile:{}", internalUUID, internalFile.getAbsolutePath());
-
             //从/mnt/sdcard/${package}/chxuuid/chuanhuauuid读取
             boolean sdcardCanUse = false;
             try {
@@ -193,7 +191,6 @@ public class AppHelper {
                 }
                 logger.info("externalUUID:{}, externalFile:{}", externalUUID, externalFile.getAbsolutePath());
             }
-
             //data下面的数据是否可用
             if (!TextUtils.isEmpty(internalUUID) && internalUUID.length() == 32) {//data下面数据
                 uuid = internalUUID;
@@ -214,13 +211,14 @@ public class AppHelper {
                 boolean result = FileHelper.writeContentToFile(externalFile, uuid, FileHelper.DEFAULT_CHARSET);
                 logger.info("writeContentToFile, result:{}, uuid : {} => {}", result, uuid, externalFile.getAbsolutePath());
             }
-            CacheUtil.putString(context,CacheUtil.uuid,uuid);
+            CacheUtil.putString(context, CacheUtil.uuid, uuid);
         }
         return uuid;
     }
 
     /**
      * 通过执行shell脚本来获取Mac地址<br/>
+     *
      * @return
      */
     public static String getWlanMACByShell() {
@@ -244,9 +242,9 @@ public class AppHelper {
             logger.info("get mac by cat /sys/class/net/wlan0/address : {}", macSerial);
             //8c:34:fd:3b:7c:f3
             //正确的情况是这样的,如果是失败的话,那就各种各样了,还是校验一下比较靠谱
-            if(!TextUtils.isEmpty(macSerial)) {
+            if (!TextUtils.isEmpty(macSerial)) {
                 String[] split = macSerial.split(":");
-                if(split == null || split.length != 6) {
+                if (split == null || split.length != 6) {
                     macSerial = "";
                     logger.warn("macSerial is not good, clean it");
                 }
@@ -259,6 +257,7 @@ public class AppHelper {
 
     /**
      * 获取WlanMAC
+     *
      * @param context
      * @param isOpenWifi 是否强制去把WI-FI打开
      * @return
@@ -266,14 +265,14 @@ public class AppHelper {
     public static String getWlanMACByWifiInfo(@NonNull Context context, boolean isOpenWifi) {
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         String macSerial = null;
-        if(wifiManager == null) {
+        if (wifiManager == null) {
             return macSerial;
         }
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        if(wifiInfo != null) {
+        if (wifiInfo != null) {
             macSerial = wifiInfo.getMacAddress();
         }
-        if(TextUtils.isEmpty(macSerial) && isOpenWifi && !wifiManager.isWifiEnabled()) {
+        if (TextUtils.isEmpty(macSerial) && isOpenWifi && !wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
 
             // 开启wifi后并不能马上获取到MAC
@@ -284,7 +283,7 @@ public class AppHelper {
             for (int i = 0; i < 20; i++) {
                 wifiInfo = wifiManager.getConnectionInfo();
                 macSerial = wifiInfo != null ? wifiInfo.getMacAddress() : null;
-                if(!TextUtils.isEmpty(macSerial)) {
+                if (!TextUtils.isEmpty(macSerial)) {
                     break;
                 }
                 try {
@@ -300,12 +299,13 @@ public class AppHelper {
 
     /**
      * 获取网卡的MAC
+     *
      * @param context
      * @return
      */
     public static String getWlanMAC(@NonNull Context context) {
         String macSerial = getWlanMACByShell();
-        if(TextUtils.isEmpty(macSerial)) {
+        if (TextUtils.isEmpty(macSerial)) {
             macSerial = getWlanMACByWifiInfo(context, false);
         }
         return macSerial;
@@ -314,13 +314,13 @@ public class AppHelper {
 
     /**
      * 获取versionName
+     *
      * @param context
      * @return
      */
-    public static String getVersionName(@NonNull Context context)
-    {
+    public static String getVersionName(@NonNull Context context) {
         try {
-            PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pi.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             logger.error("get package name fail", e);
@@ -331,13 +331,13 @@ public class AppHelper {
 
     /**
      * 获取版本号(内部识别号)
+     *
      * @param context
      * @return
      */
-    public static int getVersionCode(@NonNull Context context)
-    {
+    public static int getVersionCode(@NonNull Context context) {
         try {
-            PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pi.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             logger.error("get package code fail", e);
@@ -347,6 +347,7 @@ public class AppHelper {
 
     /**
      * 获取蓝牙MAC
+     *
      * @return
      */
     public static String getBluetoothMAC() {
@@ -360,6 +361,7 @@ public class AppHelper {
 
     /**
      * 生成UUID的规则
+     *
      * @param context
      * @return
      */
@@ -418,14 +420,14 @@ public class AppHelper {
         String key = "APPHELPER_CHANNEL";
         try {
             long installedTime = new File(sourceDir).lastModified();
-            key = key+"_"+installedTime;
+            key = key + "_" + installedTime;
 
-            String cachechannel ="";
-            if(!TextUtils.isEmpty(cachechannel)){
-                logger.info("get cache channel, key={},value={}",key,cachechannel);
+            String cachechannel = "";
+            if (!TextUtils.isEmpty(cachechannel)) {
+                logger.info("get cache channel, key={},value={}", key, cachechannel);
                 return cachechannel;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         try {
          /*   ZipFile zipFile = new ZipFile(sourceDir);
@@ -439,7 +441,7 @@ public class AppHelper {
         } catch (Exception e) {
             logger.error("getChannel failed", e);
         }
-        if(!TextUtils.isEmpty(channel)){
+        if (!TextUtils.isEmpty(channel)) {
 //            GlobalVariable.aCache.put(key, channel);
         }
         logger.info("channel={}", channel);
@@ -454,7 +456,7 @@ public class AppHelper {
 
     public static String getNetworkType(Context context) {
         String strNetworkType = "unknow";
-        ConnectivityManager connectivityManager =(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
@@ -536,7 +538,7 @@ public class AppHelper {
             logger.warn("", e);
         }
         String value = "";
-        if(bundle != null) {
+        if (bundle != null) {
             value = bundle.getString(key, "");
         }
         return value;
@@ -573,16 +575,16 @@ public class AppHelper {
                 str = input.readLine();
                 getprop.append(str).append("\n");
 
-                if(TextUtils.isEmpty(str)) {
+                if (TextUtils.isEmpty(str)) {
                     break;
                 }
 
                 str = str.trim();
                 String[] splits = str.split(":", 2);
-                if(splits != null && splits.length == 2) {
+                if (splits != null && splits.length == 2) {
                     int start = splits[0].indexOf("[") + 1;
                     int end = splits[0].lastIndexOf("]");
-                    if(end < 0) {
+                    if (end < 0) {
                         end = splits[0].length();
                     }
                     String key = splits[0].substring(start, end);
@@ -590,7 +592,7 @@ public class AppHelper {
                     //如果没有就是-1,加一就正好是0,如果是0那么也需要加一才能去掉这个[
                     start = splits[1].indexOf("[") + 1;
                     end = splits[1].lastIndexOf("]");
-                    if(end < 0) {
+                    if (end < 0) {
                         end = splits[1].length();
                     }
                     String value = splits[1].substring(start, end);
@@ -621,36 +623,39 @@ public class AppHelper {
     }
 
     public static String getIMEI(@NonNull Context context) {
-        String imei="";
-        try{
+        String imei = "";
+        try {
             TelephonyManager mTelephonyMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             if (mTelephonyMgr != null) {
-                imei =mTelephonyMgr.getDeviceId();
+                imei = mTelephonyMgr.getDeviceId();
             }
-        }catch (SecurityException e){
+        } catch (SecurityException e) {
             logger.warn("", e);
         }
 
         return imei;
     }
+
     public static boolean getGpsState(Context cxt) {
-        if(cxt==null){
+        if (cxt == null) {
             return false;
         }
         LocationManager locationManager = (LocationManager) cxt
                 .getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
+
     public static boolean getNetLocationState(Context cxt) {
-        if(cxt==null){
+        if (cxt == null) {
             return false;
         }
         LocationManager locationManager = (LocationManager) cxt
                 .getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
+
     // 判断是否缺少权限
-    public static boolean lacksPermission(Context context,String permission) {
+    public static boolean lacksPermission(Context context, String permission) {
         try {
             return ContextCompat.checkSelfPermission(context, permission) ==
                     PackageManager.PERMISSION_DENIED;
@@ -660,12 +665,12 @@ public class AppHelper {
     }
 
     public static String getSimOperatorName(@NonNull Context context) {
-        try{
+        try {
             TelephonyManager mTelephonyMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             if (mTelephonyMgr != null) {
                 return mTelephonyMgr.getSimOperatorName();
             }
-        }catch (SecurityException e){
+        } catch (SecurityException e) {
             logger.warn("", e);
         }
         return "";

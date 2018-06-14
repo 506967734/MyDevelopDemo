@@ -4,7 +4,4 @@
         <attr name="NoTitleBar" format="boolean"/>
     </declare-styleable>
 
-    <string-array name="progressMessage">
-        <item>请耐心等待，程序正在努力加载中</item>
-    </string-array>
 </resources>

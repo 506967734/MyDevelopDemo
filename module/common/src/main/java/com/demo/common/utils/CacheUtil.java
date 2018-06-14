@@ -25,7 +25,8 @@ public class CacheUtil {
     private static Logger logger = LoggerFactory.getLogger("CommonVariable");
 
     public final static String FIRST_PERMISSION_REQUEST_REFUSE = "first_permission_request";//第一次启动权限请求失败
-    public static final String uuid="uuid";
+    public static final String uuid = "uuid";
+
     /**
      * desc:保存对象
      *
@@ -89,7 +90,7 @@ public class CacheUtil {
      * @param key
      */
     public static void putString(Context context, String key, String value) {
-        if(context==null){
+        if (context == null) {
             return;
         }
         SharedPreferences sharedata = context.getSharedPreferences(SPlConstant.realNameAuth, 0);
@@ -107,14 +108,12 @@ public class CacheUtil {
      * @param key
      */
     public static String getString(Context context, String key) {
-        if(context==null){
+        if (context == null) {
             return "";
         }
         SharedPreferences sharedata = context.getSharedPreferences(SPlConstant.realNameAuth, 0);
         if (sharedata != null) {
-
             return sharedata.getString(key, "");
-
         }
         return "";
 
@@ -126,8 +125,8 @@ public class CacheUtil {
      * @param context
      * @param key
      */
-    public static String getString(Context context, String key,String defvalue) {
-        if(context==null){
+    public static String getString(Context context, String key, String defvalue) {
+        if (context == null) {
             return "";
         }
         SharedPreferences sharedata = context.getSharedPreferences(SPlConstant.realNameAuth, 0);
@@ -142,7 +141,7 @@ public class CacheUtil {
 
 
     public static void putBoolean(Context context, String key, boolean value) {
-        if(context==null){
+        if (context == null) {
             return;
         }
         SharedPreferences sharedata = context.getSharedPreferences(SPlConstant.realNameAuth, 0);
@@ -154,7 +153,7 @@ public class CacheUtil {
     }
 
     public static boolean getBoolean(Context context, String key) {
-        if(context==null){
+        if (context == null) {
             return false;
         }
         SharedPreferences sharedata = context.getSharedPreferences(SPlConstant.realNameAuth, 0);

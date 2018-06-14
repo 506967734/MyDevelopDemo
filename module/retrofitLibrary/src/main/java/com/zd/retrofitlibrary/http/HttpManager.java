@@ -10,6 +10,7 @@ import com.zd.retrofitlibrary.api.BaseApi;
 import com.zd.retrofitlibrary.exception.RetryWhenNetworkException;
 import com.zd.retrofitlibrary.http.func.ExceptionFunc;
 import com.zd.retrofitlibrary.http.func.ResulteFunc;
+import com.zd.retrofitlibrary.interceptor.HeaderInterceptor;
 import com.zd.retrofitlibrary.interceptor.HttpLoggingInterceptor;
 import com.zd.retrofitlibrary.listener.HttpOnNextListener;
 import com.zd.retrofitlibrary.subscribers.ProgressSubscriber;
@@ -90,6 +91,8 @@ public class HttpManager {
         builder.readTimeout(readTime, TimeUnit.SECONDS);
         builder.writeTimeout(readTime, TimeUnit.SECONDS);
         builder.retryOnConnectionFailure(false);
+        //设置X-Ehuodi的追踪HEADER,和更新时间
+        builder.addInterceptor(new HeaderInterceptor());
         //设置HEADERS的追踪日志
         builder.addNetworkInterceptor(new HttpLoggingInterceptor(Constants.NET_LOG_HEADERS, HttpLoggingInterceptor.Level.HEADERS));
         //设置追踪BODYS的日志
