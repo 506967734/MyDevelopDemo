@@ -1,8 +1,9 @@
 package com.zd.retrofitlibrary.http.func;
 
-import android.util.Log;
-
 import com.zd.retrofitlibrary.exception.FactoryException;
+
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import rx.Observable;
 import rx.functions.Func1;
@@ -13,9 +14,11 @@ import rx.functions.Func1;
  */
 
 public class ExceptionFunc implements Func1<Throwable, Observable> {
+    private static final Logger logger = LoggerFactory.getLogger("ExceptionFunc");
+
     @Override
     public Observable call(Throwable throwable) {
-        Log.e("Tag","-------->"+throwable.getMessage());
-        return Observable.error(FactoryException.analysisExcetpion(throwable));
+        logger.debug(throwable.getMessage());
+        return Observable.error(FactoryException.analysisException(throwable));
     }
 }

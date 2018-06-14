@@ -25,4 +25,9 @@ public interface HttpOnNextListener {
      * @param method
      */
     void onError(ApiException e, String method);
+
+    /**
+     * 加载成功
+     */
+    void onFinish();
 }

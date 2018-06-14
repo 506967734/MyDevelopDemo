@@ -1,6 +1,5 @@
 package com.zd.retrofitlibrary.exception;
 
-
 import org.json.JSONException;
 
 import java.net.ConnectException;
@@ -21,32 +20,32 @@ public class FactoryException {
     private static final String ConnectException_MSG = "连接失败";
     private static final String JSONException_MSG = "数据解析失败";
     private static final String UnknownHostException_MSG = "无法解析该域名";
-
+    public static final String NetWordBad_MSG = "加载失败，请检查网络是否连接正常";
     /**
      * 解析异常
      *
      * @param e
      * @return
      */
-    public static ApiException analysisExcetpion(Throwable e) {
+    public static ApiException analysisException(Throwable e) {
         ApiException apiException = new ApiException(e);
         if (e instanceof HttpException) {
-             /*网络异常*/
+            /*网络异常*/
             apiException.setCode(CodeException.HTTP_ERROR);
             apiException.setDisplayMessage(HttpException_MSG);
         } else if (e instanceof HttpTimeException) {
-             /*自定义运行时异常*/
+            /*自定义运行时异常*/
             HttpTimeException exception = (HttpTimeException) e;
             apiException.setCode(CodeException.RUNTIME_ERROR);
             apiException.setDisplayMessage(exception.getMessage());
-        } else if (e instanceof ConnectException ||e instanceof SocketTimeoutException) {
-             /*链接异常*/
+        } else if (e instanceof ConnectException || e instanceof SocketTimeoutException) {
+            /*链接异常*/
             apiException.setCode(CodeException.HTTP_ERROR);
             apiException.setDisplayMessage(ConnectException_MSG);
-        } else if ( e instanceof JSONException || e instanceof ParseException) {
+        } else if (e instanceof JSONException || e instanceof ParseException) {
             apiException.setCode(CodeException.JSON_ERROR);
             apiException.setDisplayMessage(JSONException_MSG);
-        }else if (e instanceof UnknownHostException){
+        } else if (e instanceof UnknownHostException) {
             /*无法解析该域名异常*/
             apiException.setCode(CodeException.UNKOWNHOST_ERROR);
             apiException.setDisplayMessage(UnknownHostException_MSG);

@@ -29,9 +29,11 @@ public class CodeException {
     public static final int UNKOWNHOST_ERROR = 0x6;
     /*失败的错误*/
     public static final int FAIL_ERROR = 0x7;
+    /*网络未连接的错误*/
+    public static final int NETWORD_BAD = 0x8;
 
 
-    @IntDef({NETWORD_ERROR, HTTP_ERROR, RUNTIME_ERROR, UNKNOWN_ERROR, JSON_ERROR, UNKOWNHOST_ERROR, FAIL_ERROR})
+    @IntDef({NETWORD_ERROR, HTTP_ERROR, RUNTIME_ERROR, UNKNOWN_ERROR, JSON_ERROR, UNKOWNHOST_ERROR, FAIL_ERROR, NETWORD_BAD})
     @Retention(RetentionPolicy.SOURCE)
 
     public @interface CodeEp {

@@ -1,9 +1,10 @@
 package com.zd.retrofitlibrary.subscribers;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 
 import com.zd.retrofitlibrary.RxRetrofitApp;
 import com.zd.retrofitlibrary.api.BaseApi;
@@ -34,23 +35,21 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
     private static final Logger logger = LoggerFactory.getLogger("ProgressSubscriber");
     /*是否弹框*/
     private boolean showPorgress = true;
-    //    回调接口
+    //回调接口
     private HttpOnNextListener mSubscriberOnNextListener;
-    //    软引用反正内存泄露
-    private Context mActivity;
-    //    加载框可自己定义
+    //软引用反正内存泄露
+    private Activity mActivity;
+    //加载框可自己定义
     private ProgressDialog pd;
     /*请求数据*/
     private BaseApi api;
-
 
     /**
      * 构造
      *
      * @param api
      */
-    public ProgressSubscriber(BaseApi api, HttpOnNextListener listenerSoftReference, Context
-            mActivity) {
+    public ProgressSubscriber(BaseApi api, HttpOnNextListener listenerSoftReference, Activity mActivity) {
         this.api = api;
         this.mSubscriberOnNextListener = listenerSoftReference;
         this.mActivity = mActivity;
@@ -131,10 +130,13 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
      */
     @Override
     public void onStart() {
+        if (!canContinue(mActivity)) {
+            return;
+        }
         showProgressDialog();
         /*缓存并且有网*/
-        if (api.isCache() && AppUtil.isNetworkAvailable(RxRetrofitApp.getApplication())) {
-             /*获取缓存数据*/
+        if (api.isCache()) {
+            /*获取缓存数据*/
             CookieResulte cookieResulte = CookieDbUtil.getInstance().queryCookieBy(api.getUrl());
             if (cookieResulte != null) {
                 long time = (System.currentTimeMillis() - cookieResulte.getTime()) / 1000;
@@ -149,12 +151,20 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
         }
     }
 
+    ////////////onCompleted和onError方法是互斥事件//////////
+
     /**
      * 完成，隐藏ProgressDialog
      */
     @Override
     public void onCompleted() {
+        if (!canContinue(mActivity)) {
+            return;
+        }
         dismissProgressDialog();
+        if (mSubscriberOnNextListener == null)
+            return;
+        mSubscriberOnNextListener.onFinish();
     }
 
     /**
@@ -165,13 +175,19 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
      */
     @Override
     public void onError(Throwable e) {
+        if (!canContinue(mActivity)) {
+            return;
+        }
         /*需要緩存并且本地有缓存才返回*/
         if (api.isCache()) {
             getCache();
         } else {
+            if (!AppUtil.isNetworkAvailable(RxRetrofitApp.getApplication())) {
+                e = new ApiException(CodeException.NETWORD_BAD, FactoryException.NetWordBad_MSG);
+            }
             errorDo(e);
         }
-        dismissProgressDialog();
+        onCompleted();
     }
 
     /**
@@ -181,18 +197,21 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
      */
     @Override
     public void onNext(T t) {
-         /*缓存处理*/
+        if (!canContinue(mActivity)) {
+            return;
+        }
+        /*缓存处理*/
         if (api.isCache()) {
-            CookieResulte resulte = CookieDbUtil.getInstance().queryCookieBy(api.getUrl());
+            CookieResulte result = CookieDbUtil.getInstance().queryCookieBy(api.getUrl());
             long time = System.currentTimeMillis();
             /*保存和更新本地数据*/
-            if (resulte == null) {
-                resulte = new CookieResulte(api.getUrl(), t.toString(), time);
-                CookieDbUtil.getInstance().saveCookie(resulte);
+            if (result == null) {
+                result = new CookieResulte(api.getUrl(), t.toString(), time);
+                CookieDbUtil.getInstance().saveCookie(result);
             } else {
-                resulte.setResulte(t.toString());
-                resulte.setTime(time);
-                CookieDbUtil.getInstance().updateCookie(resulte);
+                result.setResulte(t.toString());
+                result.setTime(time);
+                CookieDbUtil.getInstance().updateCookie(result);
             }
         }
         if (mSubscriberOnNextListener != null) {
@@ -207,7 +226,6 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
      * @param result
      */
     private void handleBaseResult(String result, String method) {
-        logger.debug(result);
         try {
             JSONObject root = new JSONObject(result);
             if (root.getInt("status") == 0) {
@@ -219,13 +237,10 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
                     }
                 }
             } else {
-                //httpOnNextListener.onError(new ApiException(CodeException.UNKNOWN_ERROR, root.getString("msg")), api.getMethod());
-                //new ApiException(CodeException.RUNTIME_ERROR, root.getString("msg")), api.getMethod());
-                ApiException e = new ApiException(CodeException.FAIL_ERROR, root.getString("msg"));
-                errorDo(e);
+                errorDo(new ApiException(CodeException.FAIL_ERROR, root.getString("msg")));
             }
         } catch (JSONException e) {
-            errorDo(FactoryException.analysisExcetpion(e));
+            errorDo(FactoryException.analysisException(e));
         }
     }
 
@@ -236,7 +251,6 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
         Observable.just(api.getUrl()).subscribe(new Subscriber<String>() {
             @Override
             public void onCompleted() {
-
             }
 
             @Override
@@ -246,7 +260,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
 
             @Override
             public void onNext(String s) {
-                           /*获取缓存数据*/
+                /*获取缓存数据*/
                 CookieResulte cookieResulte = CookieDbUtil.getInstance().queryCookieBy(s);
                 if (cookieResulte == null) {
                     throw new HttpTimeException(HttpTimeException.NO_CHACHE_ERROR);
@@ -284,5 +298,22 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
         }
     }
 
+
+    public boolean canContinue(Activity activity) {
+        if (activity == null) {
+            logger.warn("canContinue return false: activity is null");
+            return false;
+        }
+        if (activity.isFinishing()) {
+            logger.warn("canContinue return false: activity.isFinishing");
+            return false;
+        }
+        if (Build.VERSION_CODES.JELLY_BEAN_MR1 <= Build.VERSION.SDK_INT
+                && activity.isDestroyed()) {
+            logger.warn("canContinue return false, SDK_INT={}", Build.VERSION.SDK_INT);
+            return false;
+        }
+        return true;
+    }
 
 }

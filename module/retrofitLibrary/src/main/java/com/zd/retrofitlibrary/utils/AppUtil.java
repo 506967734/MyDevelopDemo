@@ -3,6 +3,7 @@ package com.zd.retrofitlibrary.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.NonNull;
 
 /**
  * 方法工具类
@@ -15,16 +16,12 @@ public class AppUtil {
      *
      * @return true, if is network available
      */
-    public static boolean isNetworkAvailable(Context context) {
+    public static boolean isNetworkAvailable(@NonNull Context context) {
         try {
             ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             if (connectivity != null) {
-                NetworkInfo info = connectivity.getActiveNetworkInfo();
-                if (info != null && info.isConnected()) {
-                    if (info.getState() == NetworkInfo.State.CONNECTED) {
-                        return true;
-                    }
-                }
+                NetworkInfo netWorkInfo = connectivity.getActiveNetworkInfo();
+                return (netWorkInfo != null && netWorkInfo.isAvailable());
             }
         } catch (Exception e) {
             e.printStackTrace();
