@@ -7,14 +7,14 @@ import com.zd.retrofitlibrary.exception.ApiException;
  * 成功回调处理
  * Created by WZG on 2016/7/16.
  */
-public interface HttpOnNextListener {
+public abstract class HttpOnNextListener {
     /**
      * 成功后回调方法
      *
      * @param result
      * @param method
      */
-    void onNext(String result, String method);
+    public abstract void onNext(String result, String method);
 
     /**
      * 失败
@@ -24,10 +24,12 @@ public interface HttpOnNextListener {
      * @param e
      * @param method
      */
-    void onError(ApiException e, String method);
+    public abstract void onError(ApiException e, String method);
 
     /**
      * 加载成功
      */
-    void onFinish();
+    public void onComplete() {
+
+    }
 }

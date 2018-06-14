@@ -22,6 +22,8 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.ref.SoftReference;
+
 import rx.Observable;
 import rx.Subscriber;
 
@@ -36,7 +38,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
     /*是否弹框*/
     private boolean showPorgress = true;
     //回调接口
-    private HttpOnNextListener mSubscriberOnNextListener;
+    private SoftReference<HttpOnNextListener> mSubscriberOnNextListener;
     //软引用反正内存泄露
     private Activity mActivity;
     //加载框可自己定义
@@ -51,7 +53,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
      */
     public ProgressSubscriber(BaseApi api, HttpOnNextListener listenerSoftReference, Activity mActivity) {
         this.api = api;
-        this.mSubscriberOnNextListener = listenerSoftReference;
+        this.mSubscriberOnNextListener = new SoftReference<>(listenerSoftReference);
         this.mActivity = mActivity;
         setShowPorgress(api.isShowProgress());
         if (api.isShowProgress()) {
@@ -158,13 +160,14 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
      */
     @Override
     public void onCompleted() {
+        logger.debug("onCompleted----onCompleted-----onCompleted");
         if (!canContinue(mActivity)) {
             return;
         }
         dismissProgressDialog();
-        if (mSubscriberOnNextListener == null)
+        if (mSubscriberOnNextListener.get() == null)
             return;
-        mSubscriberOnNextListener.onFinish();
+        mSubscriberOnNextListener.get().onComplete();
     }
 
     /**
@@ -231,7 +234,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
             if (root.getInt("status") == 0) {
                 if (root.has("data")) {
                     try {
-                        mSubscriberOnNextListener.onNext(root.getString("data"), method);
+                        mSubscriberOnNextListener.get().onNext(root.getString("data"), method);
                     } catch (JSONException e) {
                         errorDo(e);
                     }
@@ -286,7 +289,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
      */
     private void errorDo(Throwable e) {
         if (mActivity == null) return;
-        HttpOnNextListener httpOnNextListener = mSubscriberOnNextListener;
+        HttpOnNextListener httpOnNextListener = mSubscriberOnNextListener.get();
         if (httpOnNextListener == null) return;
         if (e instanceof ApiException) {
             httpOnNextListener.onError((ApiException) e, api.getMethod());
