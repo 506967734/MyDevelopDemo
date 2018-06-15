@@ -55,7 +55,6 @@ android {
             pseudoLocalesEnabled false
         }
     }
-
 }
 
 def buildTime() {
