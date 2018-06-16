@@ -5,4 +5,7 @@
     <string name="category">G商城</string>
     <string name="car">购物车</string>
     <string name="personal">个人中心</string>
+
+    <string name="item_example_number_title">第%02d条数据</string>
+    <string name="item_example_number_abstract">这是测试的第%02d条数据</string>
 </resources>

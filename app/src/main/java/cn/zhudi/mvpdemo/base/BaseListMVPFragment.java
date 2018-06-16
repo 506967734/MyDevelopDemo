@@ -3,6 +3,10 @@ package cn.zhudi.mvpdemo.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ListView;
 
@@ -16,13 +20,15 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import cn.zhudi.mvpdemo.R;
 
+import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+
 public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends BaseFragment {
+    private Context mContext;
     @BindView(R.id.refreshLayout)
     public SmartRefreshLayout refreshLayout;
-    @BindView(R.id.list)
-    public ListView listView;
+    @BindView(R.id.recyclerView)
+    public RecyclerView recyclerView;
     public ArrayList<T> list = new ArrayList<>();
-    public Context context;
 
     /**
      * 控制器
@@ -51,17 +57,56 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
      */
     protected abstract void loadMore();
 
+    /**
+     * 最后一页
+     */
     protected void lastPage() {
         if (refreshLayout != null) {
             refreshLayout.setEnableLoadMore(false);
         }
     }
 
+    /**
+     * 加载完成
+     */
     protected void requestFinish() {
         if (refreshLayout != null) {
             refreshLayout.finishRefresh();
             refreshLayout.finishLoadMore();
         }
+    }
+
+    /**
+     * 设置ItemAnimator
+     *
+     * @return
+     */
+    protected RecyclerView.ItemAnimator setRecyclerViewItemAnimator() {
+        return new DefaultItemAnimator();
+    }
+
+    /**
+     * 设置LayoutManager
+     *
+     * @return
+     */
+    protected RecyclerView.LayoutManager setRecyclerViewLayoutManager() {
+        return new LinearLayoutManager(mContext);
+    }
+
+    /**
+     * 设置ItemDecoration
+     *
+     * @return
+     */
+    protected RecyclerView.ItemDecoration setRecyclerViewItemDecoration() {
+        return new DividerItemDecoration(mContext, VERTICAL);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
     }
 
     @Override
@@ -95,6 +140,9 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
                 loadMore();
             }
         });
+        recyclerView.setItemAnimator(setRecyclerViewItemAnimator());
+        recyclerView.setLayoutManager(setRecyclerViewLayoutManager());
+        recyclerView.addItemDecoration(setRecyclerViewItemDecoration());
     }
 
     @Override
