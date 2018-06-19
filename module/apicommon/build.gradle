@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':module:retrofitLibrary')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    provided project(':module:retrofitLibrary')
 }

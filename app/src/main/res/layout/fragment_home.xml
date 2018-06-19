@@ -40,7 +40,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout style="@style/navLily">
+                <LinearLayout
+                    android:id="@+id/lilyHome"
+                    style="@style/navLily">
 
                     <ImageView
                         style="@style/navIv"
@@ -51,7 +53,9 @@
                         android:text="超市" />
                 </LinearLayout>
 
-                <LinearLayout style="@style/navLily">
+                <LinearLayout
+                    android:id="@+id/lilyLogin"
+                    style="@style/navLily">
 
                     <ImageView
                         style="@style/navIv"

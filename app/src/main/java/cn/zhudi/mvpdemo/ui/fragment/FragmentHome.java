@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 
 import java.util.ArrayList;
 
@@ -26,6 +29,10 @@ public class FragmentHome extends BaseFragment implements ViewPager.OnPageChange
     InfiniteIndicator mAnimCircleIndicator;
     @BindView(R.id.ivAd)
     ImageView ivAd;
+    @BindView(R.id.lilyHome)
+    LinearLayout lilyHome;
+    @BindView(R.id.lilyLogin)
+    LinearLayout lilyLogin;
 
     private ArrayList<Page> pageViews;
 
@@ -59,6 +66,18 @@ public class FragmentHome extends BaseFragment implements ViewPager.OnPageChange
     }
 
     private void initView() {
+        lilyHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance().build("/homemodule/activity/MainHomeActivity").navigation();
+            }
+        });
+        lilyLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance().build("/loginmodule/activity/MainLoginActivity").navigation();
+            }
+        });
 //        int width = ZhudiScreenUtil.getScreenWidth(getActivity());
 //        ZhudiScreenUtil.setHeightNumber(mAnimCircleIndicator, width * 15 / 32);
 //        IndicatorConfiguration configuration = new IndicatorConfiguration.Builder()

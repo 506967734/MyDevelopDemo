@@ -8,7 +8,6 @@ import com.demo.common.base.BaseApplication;
 import com.demo.common.log.LogBackUtil;
 import com.demo.common.utils.AppHelper;
 import com.demo.common.utils.DynamicTimeFormat;
-import com.facebook.stetho.Stetho;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -52,7 +51,7 @@ public class MainApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Stetho.initializeWithDefaults(this);
+        //Stetho.initializeWithDefaults(this);
         initLog();
         initWebViewX5Environment();
 

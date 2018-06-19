@@ -1,4 +1,4 @@
-include ':app'
+include ':app', ':loginmmodule', ':homemodule', ':mallmodule'
 include(":module:retrofitLibrary")
 include(":module:testmodule")
 include(":module:common")

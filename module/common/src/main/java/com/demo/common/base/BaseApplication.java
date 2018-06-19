@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.demo.common.CommonApplication;
 import com.demo.common.utils.AppHelper;
 
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ import java.util.concurrent.Executors;
  * Created by cwf on 17/9/4.
  */
 
-public class BaseApplication extends Application {
+public class BaseApplication extends CommonApplication {
 
     private static BaseApplication instance;
     protected static Logger logger = null;

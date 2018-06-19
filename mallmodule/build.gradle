@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply from: "${rootProject.rootDir}/common_config.gradle"
+
+android {
+    compileSdkVersion BUILD_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testProvided 'junit:junit:4.12'
+    androidTestProvided 'com.android.support.test:runner:1.0.2'
+    androidTestProvided 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
