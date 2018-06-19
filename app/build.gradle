@@ -25,28 +25,12 @@ android {
         }
     }
 
-
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
             pseudoLocalesEnabled true
-//            applicationVariants.all {
-//                variant ->
-//                    variant.outputs.all {
-//
-//                    }
-//                variant.outputs.each { output ->
-//                    if (output.outputFile != null && output.outputFile.name.endsWith('.apk')
-//                            && 'release'.equals(variant.buildType.name)) {
-//                        def apkFile = new File(
-//                                output.outputFile.getParent(),
-//                                "mvp_demo${variant.flavorName}_v${variant.versionName}_${buildTime()}.apk")
-//                        output.outputFile = apkFile
-//                    }
-//                }
-//            }
         }
 
         debug {
@@ -86,12 +70,12 @@ dependencies {
     compile project(':module:retrofitLibrary')
     compile project(':module:common')
     compile project(':module:apicommon')
-    compile project(':module:webviewlibrary')
 //    compile project(':homemodule')
-    compile project(':loginmmodule')
+//    compile project(':loginmmodule')
     compile project(':mallmodule')
 
     compile(name: 'homemodule-release', ext: 'aar')
+    compile(name: 'loginmmodule-release', ext: 'aar')
     //debugProvided project(':module:testmodule')
 }
 

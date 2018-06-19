@@ -1,11 +1,7 @@
 include ':app', ':loginmmodule', ':homemodule', ':mallmodule'
 include(":module:retrofitLibrary")
-include(":module:testmodule")
 include(":module:common")
 include(":module:apicommon")
-include(":module:mockmodule")
-include(":module:autotest")
-include(":module:webviewlibrary")
 ////初始化gradle时调用
 //def initGradleEnvironment() {
 //    Properties properties = new Properties();
