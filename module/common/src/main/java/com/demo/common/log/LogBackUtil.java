@@ -45,15 +45,20 @@ public class LogBackUtil {
         encoderLogger.setContext(lc);
         encoderLogger.setDoEncryption(doEncryption);
         encoderLogger.setKey(rsaPubKey);
+        //输出log的格式
         encoderLogger.setPattern("[%-5level] %d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] [%logger{36}] - %msg%n");
         encoderLogger.start();
 
+        //按天固定生成的日志
         RollingFileAppender<ILoggingEvent> rollAppender = new RollingFileAppender<ILoggingEvent>();
         rollAppender.setAppend(true);
 
+        // OPTIONAL: Set an active log file (separate from the rollover files).
+        // If rollingPolicy.fileNamePattern already set, you don't need this.
+        //rollingFileAppender.setFile(LOG_DIR + "/log.txt");
         TimeBasedRollingPolicy rollingPolicy = new TimeBasedRollingPolicy<>();
-        rollingPolicy.setFileNamePattern(LOG_DIR + "/%d{yyyy-MM-dd_HH}.logFile.txt.gz");
-        //sd卡上存7天日志，没有sd卡在data/data上存1天日志
+        rollingPolicy.setFileNamePattern(LOG_DIR + "/%d{yyyy-MM-dd_HH}.logFile.txt");
+        //sd卡上存7天日志，没有sd卡在data/data上存1天日志 日志文件保留天数
         if (!SAVE_ON_SDCARD) {
             rollingPolicy.setMaxHistory(24);
         } else {
@@ -64,7 +69,7 @@ public class LogBackUtil {
         rollingPolicy.start();
 
         rollAppender.setContext(lc);
-        rollAppender.setFile(LOG_DIR + "/logFile.txt");
+        //rollAppender.setFile(LOG_DIR + "/logFile.txt");
         rollAppender.setRollingPolicy(rollingPolicy);
         rollAppender.setEncoder(encoderLogger);
         rollAppender.start();
@@ -74,10 +79,11 @@ public class LogBackUtil {
         ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
         root.addAppender(rollAppender);
 
-        // setup LogcatAppender
+        // setup LogcatAppender 表示在控制台输出
         if (showLogCat) {
             PatternLayoutEncoder encoder2 = new PatternLayoutEncoder();
             encoder2.setContext(lc);
+            //输出log的格式
             encoder2.setPattern("[%-5level] %d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] [%logger{36}] - %msg%n");
             encoder2.start();
 
@@ -87,7 +93,6 @@ public class LogBackUtil {
             logcatAppender.start();
             root.addAppender(logcatAppender);
         }
-
     }
 
     private static String getLogsDir(Context cxt) {
