@@ -29,7 +29,7 @@ public class LogBackUtil {
     /**
      * @param cxt
      * @param doEncryption 是否加密存储
-     * @param showLogCat 是否在控制台显示logcat
+     * @param showLogCat   是否在控制台显示logcat
      */
     public static void configureLogbackDirectly(Context cxt, boolean doEncryption, boolean showLogCat) {
         //读取rsa秘钥
@@ -52,11 +52,11 @@ public class LogBackUtil {
         rollAppender.setAppend(true);
 
         TimeBasedRollingPolicy rollingPolicy = new TimeBasedRollingPolicy<>();
-        rollingPolicy.setFileNamePattern(LOG_DIR+"/%d{yyyy-MM-dd_HH}.logFile.txt.gz");
+        rollingPolicy.setFileNamePattern(LOG_DIR + "/%d{yyyy-MM-dd_HH}.logFile.txt.gz");
         //sd卡上存7天日志，没有sd卡在data/data上存1天日志
-        if(!SAVE_ON_SDCARD){
+        if (!SAVE_ON_SDCARD) {
             rollingPolicy.setMaxHistory(24);
-        }else{
+        } else {
             rollingPolicy.setMaxHistory(168);
         }
         rollingPolicy.setParent(rollAppender);
@@ -64,7 +64,7 @@ public class LogBackUtil {
         rollingPolicy.start();
 
         rollAppender.setContext(lc);
-        rollAppender.setFile(LOG_DIR+"/logFile.txt");
+        rollAppender.setFile(LOG_DIR + "/logFile.txt");
         rollAppender.setRollingPolicy(rollingPolicy);
         rollAppender.setEncoder(encoderLogger);
         rollAppender.start();
@@ -75,7 +75,7 @@ public class LogBackUtil {
         root.addAppender(rollAppender);
 
         // setup LogcatAppender
-        if(showLogCat){
+        if (showLogCat) {
             PatternLayoutEncoder encoder2 = new PatternLayoutEncoder();
             encoder2.setContext(lc);
             encoder2.setPattern("[%-5level] %d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] [%logger{36}] - %msg%n");
@@ -91,10 +91,10 @@ public class LogBackUtil {
     }
 
     private static String getLogsDir(Context cxt) {
-        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             SAVE_ON_SDCARD = true;
-            return Environment.getExternalStorageDirectory()+ File.separator+cxt.getPackageName();
-        }else{
+            return Environment.getExternalStorageDirectory() + File.separator + cxt.getPackageName();
+        } else {
             SAVE_ON_SDCARD = false;
             return cxt.getDir("logs", Context.MODE_PRIVATE).getAbsolutePath();
         }
@@ -104,7 +104,7 @@ public class LogBackUtil {
         try {
             ApplicationInfo info = cxt.getPackageManager().getApplicationInfo(cxt.getPackageName(), PackageManager.GET_META_DATA);
             return info.metaData.getString(PUB_KEY_NAME);
-        }catch (Throwable e){
+        } catch (Throwable e) {
             e.printStackTrace();
             return null;
         }
