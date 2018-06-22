@@ -16,13 +16,17 @@ import com.demo.common.utils.ToastCompat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import cn.zhudi.mvpdemo.R;
+import cn.zhudi.mvpdemo.adapter.PersonAdapter;
 import cn.zhudi.mvpdemo.base.BaseFragment;
 import cn.zhudi.mvpdemo.base.BaseListMVPFragment;
 import cn.zhudi.mvpdemo.base.BasePresenter;
+import cn.zhudi.mvpdemo.model.entities.User;
 import cn.zhudi.mvpdemo.persenter.FragmentPersonPresenter;
 import cn.zhudi.mvpdemo.view.FragmentPersonView;
 
@@ -37,7 +41,7 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 public class FragmentPerson extends BaseListMVPFragment<FragmentPersonView, FragmentPersonPresenter> implements FragmentPersonView {
 
     private static final Logger logger = LoggerFactory.getLogger("FragmentPerson");
-    private BaseRecyclerAdapter<Void> mAdapter;
+    private PersonAdapter<User> mAdapter;
 
     public static FragmentPerson newInstance(String s) {
         FragmentPerson fragment = new FragmentPerson();
@@ -97,20 +101,14 @@ public class FragmentPerson extends BaseListMVPFragment<FragmentPersonView, Frag
     }
 
     private void initView() {
-        recyclerView.setAdapter(mAdapter = new BaseRecyclerAdapter<Void>(initData(), simple_list_item_2, new AdapterView.OnItemClickListener() {
+        mAdapter = new PersonAdapter<>(getActivity(), initData(), simple_list_item_2, new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                logger.debug("onItemClick----onItemClick---onItemClick");
-                ToastCompat.show(getActivity(), i + "", Toast.LENGTH_LONG);
-            }
-        }) {
-            @Override
-            protected void onBindViewHolder(SmartViewHolder holder, Void model, int position) {
-                holder.text(android.R.id.text1, getString(R.string.item_example_number_title, position));
-                holder.text(android.R.id.text2, getString(R.string.item_example_number_abstract, position));
-                //holder.textColorId(android.R.id.text2, R.color.colorTextAssistant);
+                ToastCompat.show(getActivity(), i + "----" + mAdapter.getItem(i).getUserName(), Toast.LENGTH_LONG);
             }
         });
+        mAdapter.setOpenAnimationEnable(false);
+        recyclerView.setAdapter(mAdapter);
     }
 
 
@@ -119,7 +117,9 @@ public class FragmentPerson extends BaseListMVPFragment<FragmentPersonView, Frag
 
     }
 
-    private Collection<Void> initData() {
-        return Arrays.asList(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    private List<User> initData() {
+        return Arrays.asList(new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"),
+                new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"),
+                new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"), new User("zhudi"));
     }
 }
