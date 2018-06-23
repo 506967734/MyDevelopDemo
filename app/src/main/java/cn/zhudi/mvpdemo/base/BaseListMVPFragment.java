@@ -43,11 +43,6 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
     protected abstract T initPresenter();
 
     /**
-     * 返回请求服务器的数据
-     */
-    protected abstract String requestData();
-
-    /**
      * 下拉刷新
      */
     protected abstract void refresh();
@@ -56,6 +51,8 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
      * 上拉加载
      */
     protected abstract void loadMore();
+
+    protected abstract RecyclerView.Adapter setRecyclerViewAdapter();
 
     /**
      * 最后一页
@@ -131,6 +128,7 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
+                refreshLayout.setEnableLoadMore(true);
                 refresh();
             }
         });
@@ -143,6 +141,7 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
         recyclerView.setItemAnimator(setRecyclerViewItemAnimator());
         recyclerView.setLayoutManager(setRecyclerViewLayoutManager());
         recyclerView.addItemDecoration(setRecyclerViewItemDecoration());
+        recyclerView.setAdapter(setRecyclerViewAdapter());
     }
 
     @Override

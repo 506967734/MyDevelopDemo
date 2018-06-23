@@ -7,7 +7,6 @@ import android.widget.FrameLayout;
 
 import com.demo.webview.X5WebView;
 
-import butterknife.BindView;
 import cn.zhudi.mvpdemo.R;
 import cn.zhudi.mvpdemo.base.BaseFragment;
 
