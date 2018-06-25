@@ -28,7 +28,6 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
     public SmartRefreshLayout refreshLayout;
     @BindView(R.id.recyclerView)
     public RecyclerView recyclerView;
-    public ArrayList<T> list = new ArrayList<>();
 
     /**
      * 控制器
@@ -52,6 +51,11 @@ public abstract class BaseListMVPFragment<V, T extends BasePresenter<V>> extends
      */
     protected abstract void loadMore();
 
+    /**
+     * Adapter设置
+     *
+     * @return adapter
+     */
     protected abstract RecyclerView.Adapter setRecyclerViewAdapter();
 
     /**
