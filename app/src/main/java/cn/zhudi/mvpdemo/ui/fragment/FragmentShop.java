@@ -7,6 +7,7 @@ import android.widget.FrameLayout;
 
 import com.demo.webview.X5WebView;
 
+import butterknife.BindView;
 import cn.zhudi.mvpdemo.R;
 import cn.zhudi.mvpdemo.base.BaseFragment;
 
@@ -16,7 +17,7 @@ import cn.zhudi.mvpdemo.base.BaseFragment;
  * 创建人：zhudi
  */
 public class FragmentShop extends BaseFragment {
-    //@BindView(R.id.webView)
+    @BindView(R.id.webView)
     ViewGroup viewParent;
     /**
      * 作为一个浏览器的示例展示出来，采用android+web的模式
