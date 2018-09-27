@@ -25,9 +25,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
-/**
- * Created by qiaobo on 16/6/27.
- */
+
 public class FileHelper {
 
     public static final String DEFAULT_CHARSET = "UTF-8";

@@ -16,7 +16,7 @@ public abstract class BaseApi {
     private boolean cache = false;
     private String progressMessage = "请稍等";
     /*基础url*/
-    private String baseUrl = "http://121.43.187.244:80/";
+    private String baseUrl = "url";
     /*方法-如果需要缓存必须设置这个参数；不需要不用設置*/
     private String method = "";
     /*有网情况下的本地缓存时间默认60秒*/

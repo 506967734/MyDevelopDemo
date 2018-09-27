@@ -6,9 +6,6 @@ import android.text.TextUtils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by lixiaolei on 2016/9/28.
- */
 public class ConvertUtil {
 
     /**

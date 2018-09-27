@@ -16,7 +16,6 @@ import java.util.concurrent.Executors;
 
 /**
  * 程序初始化
- * Created by cwf on 17/9/4.
  */
 
 public class BaseApplication extends Application {

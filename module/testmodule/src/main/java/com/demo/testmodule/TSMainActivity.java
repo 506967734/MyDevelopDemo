@@ -7,10 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
-
-/**
- * Created by wenfu.chen on 18/5/24.
- */
 public class TSMainActivity extends Activity {
 
     private Button mBtnRpcSetting;
